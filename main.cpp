@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-
+#include <unistd.h>
 bool isLoggedIn()
 {
     std::string login;
@@ -40,6 +40,9 @@ int main()
       file.open("c:\\" + login + ".txt");
       file << login << std::endl << password;
       file.close();
+      std::cout << "Account created! Now you will be pushed back to main menu!" << std::endl;
+      sleep(2);
+      system("CLS");
       main();  
     } else if (choice == 2) 
     {
@@ -55,11 +58,19 @@ int main()
     } else
     {
         std::cout << "False!" << std::endl;
-        system("PAUSE");
-        
-        return 0;
+        sleep(1);
+        std::cout << "After 2 secountds You will return to main menu" << std::endl;
+        sleep(2);
+        system("CLS");
+        main();  
     }
-    
+    } else
+    {
+        system("CLS");
+        std::cout << "This is not valid option! Try one more time!";
+        sleep(2);
+        system("CLS");
+        main();
     }
     return 0;
 }
